@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		2AD4DED22E11C05500105DBD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2AD4DED02E11C04A00105DBD /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		2AD4DE972E109AE700105DBD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		2AD4DE892E109ADE00105DBD /* momogram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = momogram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AD4DE962E109AE700105DBD /* momogramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = momogramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AD4DEA02E109AE700105DBD /* momogramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = momogramUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AD4DED02E11C04A00105DBD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -79,6 +84,7 @@
 				2AD4DE992E109AE700105DBD /* momogramTests */,
 				2AD4DEA32E109AE700105DBD /* momogramUITests */,
 				2AD4DE8A2E109ADE00105DBD /* Products */,
+				2AD4DED02E11C04A00105DBD /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AD4DED22E11C05500105DBD /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
