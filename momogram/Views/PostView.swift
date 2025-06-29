@@ -8,9 +8,11 @@ struct PostView: View {
         VStack(alignment: .leading) {
             // Post Header
             HStack {
-                Circle()
-                    .fill(Color.gray)
+                Image(post.user.profileImageName)
+                    .resizable()
+                    .scaledToFill()
                     .frame(width: 40, height: 40)
+                    .clipShape(Circle())
                 Text(post.user.username)
                     .fontWeight(.semibold)
                 Spacer()
@@ -19,9 +21,9 @@ struct PostView: View {
             .padding()
             
             // Post Image
-            Rectangle()
-                .fill(Color.gray.opacity(0.3))
-                .aspectRatio(1, contentMode: .fit)
+            Image(post.imageName)
+                .resizable()
+                .scaledToFill()
             
             // Post Actions
             HStack(spacing: 20) {
@@ -43,12 +45,12 @@ struct PostView: View {
             HStack {
                 Text(post.user.username)
                     .font(.subheadline)
-                    .padding(.horizontal)
                     .bold()
                 
                 Text(post.caption)
                     .font(.subheadline)
             }
+            .padding(.horizontal)
         
             
         }

@@ -2,8 +2,10 @@ import SwiftUI
 
 struct ProfileView: View {
     let user: UserModel
+    let images = MockData.profileImages
+    let followers = MockData.followers
     
-    let posts = ["grid", "grid1", "grid2", "post4", "post5", "post6"]
+    @Environment(\.dismiss) private var dismiss
     
     // Grid for photos
     let columns = [GridItem(.flexible()),
@@ -54,12 +56,13 @@ struct ProfileView: View {
                         .padding(.vertical, 8)
                         .background(Color(.systemGray5))
                         .cornerRadius(8)
+                    
                 }
                 .padding(.horizontal)
                 
                 // Posts grid
                 LazyVGrid(columns: columns, spacing: 2) {
-                    ForEach(posts, id: \.self) { postName in
+                    ForEach(MockData.profileImages, id: \.self) { postName in
                         Image(postName)
                             .resizable()
                             .scaledToFill()
@@ -73,6 +76,18 @@ struct ProfileView: View {
         }
         .navigationTitle(user.username)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 17, weight: .semibold))
+                        .foregroundColor(.primary)
+                }
+            }
+        }
     }
     
     // Static components

@@ -9,11 +9,10 @@ struct ContentView: View {
     @State private var showNewPostView = false
     @State private var showProfileView = false
     
-    @State private var currentUser = UserModel(
-        username: "maria",
-        profileImageName: "grid2",
-        bio: ""
-    )
+    let user = MockData.currentUser
+    let images = MockData.profileImages
+    let followers = MockData.followers
+
     
     var body: some View {
         NavigationStack {
@@ -40,7 +39,7 @@ struct ContentView: View {
                 // Feed
                 ScrollView {
                     VStack(spacing: 20) {
-                        ForEach(viewModel.posts) { post in
+                        ForEach(MockData.posts) { post in
                             PostView(post: post)
                         }
                     }
@@ -48,13 +47,30 @@ struct ContentView: View {
                 
                 Divider()
                 
-                // Bottom Navigation
-                HStack(spacing: 40) {
-                    Image(systemName: "house.fill")
-                    Image(systemName: "magnifyingglass")
-                    
+                HStack {
+                    Button {
+                    } label: {
+                        Image(systemName: "house.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 24)
+                    }
+                    .frame(maxWidth: .infinity)
+
+                    Button {
+                    } label: {
+                        Image(systemName: "magnifyingglass")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 24)
+                    }
+                    .frame(maxWidth: .infinity)
+
                     PhotosPicker(selection: $selectedItem, matching: .images) {
                         Image(systemName: "plus.app")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 24)
                     }
                     .onChange(of: selectedItem) { oldValue, newValue in
                         Task {
@@ -65,15 +81,33 @@ struct ContentView: View {
                             }
                         }
                     }
-                    
-                    Image(systemName: "play.rectangle")
-                    Image(systemName: "person.circle")
-                        .onTapGesture {
-                            showProfileView = true
-                        }
+                    .frame(maxWidth: .infinity)
+
+                    Button {
+                        // ação reels
+                    } label: {
+                        Image(systemName: "play.rectangle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 24)
+                    }
+                    .frame(maxWidth: .infinity)
+
+                    Button {
+                        showProfileView = true
+                    } label: {
+                        Image(systemName: "person.circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 24)
+                    }
+                    .frame(maxWidth: .infinity)
                 }
-                .font(.title2)
+                .padding(.horizontal)
                 .padding(.vertical, 10)
+                .foregroundColor(.primary)
+
+                
             }
             // Navegação para Nova Postagem
             .navigationDestination(isPresented: $showNewPostView) {
@@ -82,7 +116,7 @@ struct ContentView: View {
                 }
             }
             .navigationDestination(isPresented: $showProfileView) {
-                ProfileView(user: currentUser)
+                ProfileView(user: user)
             }
         }
     }
